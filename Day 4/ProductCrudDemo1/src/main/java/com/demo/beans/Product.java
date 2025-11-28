@@ -21,6 +21,16 @@ public class Product {
 		this.expdate = expdate;
 		this.cid = cid;
 	}
+	
+	
+	public Product(String name, Double price, int qty, LocalDate expdate, int cid) {
+		super();
+		this.name = name;
+		this.price = price;
+		this.qty = qty;
+		this.expdate = expdate;
+		this.cid = cid;
+	}
 	public int getId() {
 		return id;
 	}

@@ -1,0 +1,22 @@
+
+// --- Code inside ProductDaoImpl.java (or similar DAO class) ---
+
+// ...
+while (rs.next()) {
+    Product p = new Product();
+    // ... setting other properties (id, name, qty, price, etc.) ...
+
+    // Fix applied here: Safe retrieval and conversion of expdate
+    java.sql.Date sqlDate = rs.getDate("expdate");
+    
+    // Check if the date from the database is NULL
+    if (sqlDate != null) {
+        p.setExpdate(sqlDate.toLocalDate()); // Safe conversion
+    } else {
+        // Handle the NULL case, e.g., set to null or a default value
+        p.setExpdate(null); // Assuming your Product bean's setExpdate accepts null
+    }
+
+    // ... add Product p to the list ...
+}
+// ...
